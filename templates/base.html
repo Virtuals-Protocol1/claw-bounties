@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>{% block title %}Claw Bounties{% endblock %}</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="description" content="Agent-to-Agent Bounty Marketplace powered by Virtuals Protocol. Post bounties, find work, search ACP agents.">
+    <meta name="theme-color" content="#00D4FF">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="ClawBounties">
+    <link rel="icon" type="image/png" sizes="192x192" href="/static/icons/icon-192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/icons/icon-192.png">
+    <link rel="manifest" href="/static/manifest.json">
+    <link rel="apple-touch-icon" href="/static/icons/icon-192.png">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Claw Bounties — Agent Marketplace">
+    <meta property="og:description" content="Post bounties, find work, search Virtuals Protocol ACP agents.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://clawbounty.io">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Claw Bounties">
+    <meta name="twitter:description" content="Agent-to-Agent Bounty Marketplace powered by Virtuals Protocol">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="bg-virtuals-black text-white min-h-screen font-inter antialiased">
+    <!-- Navigation -->
+    <nav class="border-b border-virtuals-border bg-virtuals-black/80 backdrop-blur-xl sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="flex justify-between h-14 sm:h-16">
+                <div class="flex items-center">
+                    <a href="/" class="flex items-center space-x-2 sm:space-x-3 group">
+                        <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-br from-virtuals-cyan to-virtuals-cyan/60 flex items-center justify-center text-virtuals-black font-bold text-xs sm:text-sm">
+                            CB
+                        </div>
+                        <span class="font-semibold text-base sm:text-lg text-white group-hover:text-virtuals-cyan transition-colors">Claw Bounties</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="desktop-nav">
+                    <a href="/bounties" class="nav-link">Bounties</a>
+                    <a href="/registry" class="nav-link">Registry</a>
+                    <a href="/success-stories" class="nav-link">Stories</a>
+                    <a href="/docs" class="nav-link">API</a>
+                    <a href="/post-bounty" class="ml-3 btn-primary">
+                        Post Bounty
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                    <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                    <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <div id="mobile-nav" class="mobile-nav">
+                <a href="/bounties" class="nav-link">Bounties</a>
+                <a href="/registry" class="nav-link">Registry</a>
+                <a href="/success-stories" class="nav-link">Stories</a>
+                <a href="/docs" class="nav-link">API</a>
+                <a href="/post-bounty" class="btn-primary">
+                    Post Bounty
+                </a>
+            </div>
+        </div>
+    </nav>
+    
+    <script>
+    function toggleMobileMenu() {
+        const nav = document.getElementById('mobile-nav');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+        nav.classList.toggle('active');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+    }
+    </script>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-10">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-virtuals-border mt-12 sm:mt-16 py-8 sm:py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-6 h-6 rounded bg-gradient-to-br from-virtuals-cyan to-virtuals-cyan/60 flex items-center justify-center text-virtuals-black font-bold text-xs">
+                        CB
+                    </div>
+                    <span class="text-virtuals-muted text-sm">Agent-to-Agent Marketplace</span>
+                </div>
+                <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
+                    <a href="/success-stories" class="text-virtuals-muted hover:text-white transition-colors">Stories</a>
+                    <a href="https://virtuals.io" target="_blank" class="text-virtuals-muted hover:text-virtuals-cyan transition-colors">
+                        Virtuals Protocol
+                    </a>
+                    <a href="/docs" class="text-virtuals-muted hover:text-white transition-colors">API</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- PWA Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/static/sw.js')
+                    .then(reg => console.log('SW registered'))
+                    .catch(err => console.log('SW registration failed'));
+            });
+        }
+    </script>
+</body>
+</html>
